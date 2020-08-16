@@ -212,6 +212,10 @@ with fluid.dygraph.guard(fluid.CPUPlace()):
 ```python
 # 定义飞桨动态图的工作环境
 with fluid.dygraph.guard(fluid.CPUPlace()):
+    # 测试模型 参数为保存模型参数的文件地址
+    model_dict, _ = fluid.load_dygraph('LR_model')
+    model.load_dict(model_dict)
+    model.eval()
     # 随机抽取一条测试数据
     np.random.shuffle(test_data)
     test_batch = test_data[0:1]
